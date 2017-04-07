@@ -107,6 +107,7 @@ add_action( 'widgets_init', 'exam_kotenko_widgets_init' );
 function exam_kotenko_scripts() {
     wp_enqueue_style( 'fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', true);
     wp_enqueue_style('gulp', get_template_directory_uri() . '/css/libs.min.css');
+    wp_enqueue_style('main', get_template_directory_uri() . '/css/main.css');
 
 	wp_enqueue_style( 'exam-kotenko-style', get_stylesheet_uri() );
 
@@ -119,6 +120,7 @@ function exam_kotenko_scripts() {
 	}
 
     wp_enqueue_script('gulp', get_template_directory_uri() . '/js/libs.min.js');
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js');
 }
 add_action( 'wp_enqueue_scripts', 'exam_kotenko_scripts' );
 

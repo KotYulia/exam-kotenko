@@ -1,0 +1,52 @@
+.site-header {
+  #primary-menu {
+    .current_page_item {
+      a {
+        background-color: #00a0d2;
+      }
+
+    }
+    .menu-item {
+      a {
+        font-size: 2rem;
+        text-transform: uppercase;
+        &:hover {
+          //color: #ffffff;
+        }
+        &:visited {
+          //color: #ffffff;
+        }
+      }
+
+    }
+  }
+
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    #primary-menu {
+      float: none;
+    }
+  }
+}
+@media (max-width: 599px) {
+  .site-header {
+    #site-navigation {
+      float: none;
+    }
+    #primary-menu {
+      position: absolute;
+      right: 0;
+      z-index: 1001;
+      width: 100%;
+      background-color: #000000;
+      border: 1px solid #ffffff;
+      .menu-item, .menu-item:first-child {
+        padding: 1rem;
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}

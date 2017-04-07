@@ -1,0 +1,43 @@
+body h1 {
+  font: 400 75px 'Alternate Got No1 D', regular;
+  text-transform: uppercase;
+  color: #b5cbd1;
+  padding-bottom: 31px; }
+
+body a {
+  font: 400 10px 'Alternate Got No3 D', regular;
+  text-decoration: none;
+  color: #ffffff; }
+
+body p, body span {
+  font: 300 10px 'Akzidenz Grotesk B E', lightCn;
+  color: #b5cbd1; }
+
+body ul {
+  list-style: none; }
+
+.site-header #primary-menu .current_page_item a {
+  background-color: #00a0d2; }
+
+.site-header #primary-menu .menu-item a {
+  font-size: 2rem;
+  text-transform: uppercase; }
+
+@media (max-width: 767px) {
+  .site-header #primary-menu {
+    float: none; } }
+
+@media (max-width: 599px) {
+  .site-header #site-navigation {
+    float: none; }
+  .site-header #primary-menu {
+    position: absolute;
+    right: 0;
+    z-index: 1001;
+    width: 100%;
+    background-color: #000000;
+    border: 1px solid #ffffff; }
+    .site-header #primary-menu .menu-item, .site-header #primary-menu .menu-item:first-child {
+      padding: 1rem;
+      display: block;
+      width: 100%; } }
