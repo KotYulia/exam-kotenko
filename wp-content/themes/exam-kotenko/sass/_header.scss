@@ -1,24 +1,44 @@
 .site-header {
-  #primary-menu {
-    .current_page_item {
-      a {
-        background-color: #00a0d2;
-      }
+  background-color: #2c3e50;
+  .content-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .main-navigation {
+    width: auto;
+  }
+  .site-title {
+    margin: 0;
+    display: inline-block;
 
-    }
+  }
+
+  #primary-menu {
     .menu-item {
       a {
-        font-size: 2rem;
+        font-size: 1.8rem;
         text-transform: uppercase;
+        color: #ffffff;
+        padding: 1rem;
         &:hover {
-          //color: #ffffff;
+          color: #ff4848;
         }
         &:visited {
-          //color: #ffffff;
+          color: #ffffff;
+          &:hover {
+            color: #ff4848;
+          }
         }
       }
 
     }
+    .current_page_item {
+      a {
+        color: #ff4848;
+      }
+    }
+
   }
 
 }

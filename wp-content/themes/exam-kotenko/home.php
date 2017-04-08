@@ -8,46 +8,62 @@
  */
 
 get_header(); ?>
-
+    <section class="title-banner" style="background: url('<?php echo get_theme_mod('img-upload');?>') center/cover no-repeat;">
+        <div class="container">
+            <h1>
+                <?php single_post_title(); ?>
+            </h1>
+        </div>
+    </section>
 <main class="main-content">
 
-    <section class="media-content">
+    <section class="blog-content">
 
-        <div class="media-block">
+        <div class="blog-block">
             <div class="container">
-                <ul class="row media-list">
-                    <?php if (have_posts()):
-                        while (have_posts()): the_post(); ?>
-                            <li>
-                                <article class="col-md-6 article-inline">
-                                    <?php the_post_thumbnail('full', 'class=img-responsive'); ?>
-                                    <div>
-                                        <h2>
-                                            <a href="<?php the_permalink(); ?>"> <?php the_title() ?></a>
-                                        </h2>
-                                        <?php the_excerpt(); ?>
-                                        <div>
-                                            <a href="<?php the_permalink() ?>#likes">
-                                                <span class="fa fa-heart"> <?php comments_number('0', '1', '%'); ?></span>
-                                            </a>
+                <div class="row">
+                    <div class="col-md-8">
+                        <ul class="row blog-list">
+                            <?php if (have_posts()):
+                                while (have_posts()): the_post(); ?>
+                                    <li>
+                                        <article class="col-md-6 article-inline">
+                                            <a href="<?php the_permalink(); ?>" class="fa fa-share-square"></a>
+                                            <?php the_post_thumbnail('full', 'class=img-responsive'); ?>
                                             <div>
-                                                <span>by
-                                                    <?php the_author(); ?> /
-                                                </span>
-                                                <a href="<?php the_permalink() ?>#comments">
-                                                    <?php comments_number('0 comments', '1 comment', '% comments'); ?> /
-                                                </a>
-                                                <span><?php the_time( 'F j, Y ' ); ?></span>
+                                                <h2>
+                                                    <a href="<?php the_permalink(); ?>"> <?php the_title() ?></a>
+                                                </h2>
+                                                <?php the_excerpt(); ?>
+                                                <span class="fa fa-clock-o"><?php the_time( 'j,m,Y ' ); ?></span>
                                             </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </li>
-                        <?php endwhile; ?>
-                    <?php else: ?>
-                        <p>No posts found</p>
-                    <?php endif; ?>
-                </ul>
+                                        </article>
+                                    </li>
+                                <?php endwhile; ?>
+                            <?php else: ?>
+                                <p>No posts found</p>
+                            <?php endif; ?>
+                            <div class="blog-pages">
+                                <?php
+                                global $wp_query;
+
+                                $big = 999999999; // need an unlikely integer
+
+                                echo paginate_links( array(
+                                    'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                                    'format' => '?paged=%#%',
+                                    'total' => $wp_query->max_num_pages,
+                                    'prev_text' => 'Prev',
+                                    'next_text' => 'Next'
+                                ) );
+                                ?>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <?php get_sidebar(); ?>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

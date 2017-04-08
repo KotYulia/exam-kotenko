@@ -1,27 +1,52 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700");
 body h1 {
-  font: 400 75px 'Alternate Got No1 D', regular;
+  font: 700 75px 'Roboto', bold;
   text-transform: uppercase;
-  color: #b5cbd1;
   padding-bottom: 31px; }
 
 body a {
-  font: 400 10px 'Alternate Got No3 D', regular;
-  text-decoration: none;
-  color: #ffffff; }
+  font: 400 10px 'Roboto', regular;
+  text-decoration: none; }
 
 body p, body span {
-  font: 300 10px 'Akzidenz Grotesk B E', lightCn;
-  color: #b5cbd1; }
+  font: 300 10px 'Roboto', light; }
 
 body ul {
   list-style: none; }
 
-.site-header #primary-menu .current_page_item a {
-  background-color: #00a0d2; }
-
-.site-header #primary-menu .menu-item a {
-  font-size: 2rem;
-  text-transform: uppercase; }
+.site-header {
+  background-color: #2c3e50; }
+  .site-header .content-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+  .site-header .main-navigation {
+    width: auto; }
+  .site-header .site-title {
+    margin: 0;
+    display: inline-block; }
+  .site-header #primary-menu .menu-item a {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 1rem; }
+    .site-header #primary-menu .menu-item a:hover {
+      color: #ff4848; }
+    .site-header #primary-menu .menu-item a:visited {
+      color: #ffffff; }
+      .site-header #primary-menu .menu-item a:visited:hover {
+        color: #ff4848; }
+  .site-header #primary-menu .current_page_item a {
+    color: #ff4848; }
 
 @media (max-width: 767px) {
   .site-header #primary-menu {
@@ -41,3 +66,58 @@ body ul {
       padding: 1rem;
       display: block;
       width: 100%; } }
+
+.home-info {
+  background-color: #ff4848; }
+  .home-info .main-title {
+    color: #ffffff;
+    font-size: 6rem;
+    text-transform: uppercase; }
+    .home-info .main-title span {
+      font-size: 6rem;
+      color: #2c3e50; }
+  .home-info p, .home-info span {
+    color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: 300; }
+  .home-info .professional-text {
+    font-size: 4.8rem;
+    margin-bottom: 1rem; }
+  .home-info .section-scroll-down {
+    text-align: center; }
+
+.welcome-info h2 {
+  font-size: 3.6rem;
+  color: #004966; }
+
+.welcome-info p {
+  font-size: 1.8rem;
+  color: #004966; }
+  .welcome-info p .text-red {
+    color: #ff4848;
+    font-size: 1.8rem; }
+
+.services {
+  background-color: #004966;
+  text-align: center; }
+  .services h2 {
+    font-size: 3.6rem;
+    font-weight: 300;
+    color: #ffffff; }
+  .services p {
+    font-size: 1.8rem;
+    color: #ffffff; }
+  .services .services-content {
+    text-align: center; }
+    .services .services-content img {
+      width: auto; }
+    .services .services-content h3 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #ffffff; }
+    .services .services-content p {
+      font-size: 1.8rem;
+      color: #ffffff; }
+
+.carousel-logo {
+  background-color: #ff4848; }

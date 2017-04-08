@@ -1,36 +1,23 @@
-//@font-face {
-//	font-family: "Alternate Got No 1 D";
-//	src: url('../fonts/Alternate Gothic No1 D Regular.otf');
-//	src: url('../fonts/Alternate Gothic No1 D Regular.eot');
-//	src: url('../fonts/Alternate Gothic No1 D Regular.svg');
-//	src: url('../fonts/Alternate Gothic No1 D Regular.ttf');
-//	src: url('../fonts/Alternate Gothic No1 D Regular.woff');
-//}
-
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 
 body {
 	h1 {
-		font: 400 75px 'Alternate Got No1 D', regular;
+		font: 700 75px 'Roboto', bold;
 		text-transform: uppercase;
-		color: #b5cbd1;
 		padding-bottom: 31px;
 	}
 	a {
-		font: 400 10px 'Alternate Got No3 D', regular;
+		font: 400 10px 'Roboto', regular;
 		text-decoration: none;
-		color: #ffffff;
 	}
 	p, span{
-		font: 300 10px 'Akzidenz Grotesk B E', lightCn;
-		color: #b5cbd1;
+		font: 300 10px 'Roboto', light;
 	}
 	ul {
 		list-style: none;
 	}
-	.main-content {
-		//background-color: #0f1318;
-	}
 }
 
 @import "header";
+@import "content";
 

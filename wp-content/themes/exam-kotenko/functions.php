@@ -108,10 +108,13 @@ function exam_kotenko_scripts() {
     wp_enqueue_style( 'fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', true);
     wp_enqueue_style('gulp', get_template_directory_uri() . '/css/libs.min.css');
     wp_enqueue_style('main', get_template_directory_uri() . '/css/main.css');
+    wp_enqueue_style('slick', get_template_directory_uri() . '/libs/slick/slick.css');
+    wp_enqueue_style('slick', get_template_directory_uri() . '/libs/slick/slick-theme.css');
 
 	wp_enqueue_style( 'exam-kotenko-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'exam-kotenko-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+
 
 	wp_enqueue_script( 'exam-kotenko-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -121,6 +124,8 @@ function exam_kotenko_scripts() {
 
     wp_enqueue_script('gulp', get_template_directory_uri() . '/js/libs.min.js');
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js');
+    wp_enqueue_script( 'slick', get_template_directory_uri() . '/libs/slick/slick.min.js');
+
 }
 add_action( 'wp_enqueue_scripts', 'exam_kotenko_scripts' );
 
@@ -151,3 +156,180 @@ require get_template_directory() . '/inc/jetpack.php';
 
 //LOGO
 add_theme_support( 'custom-logo' );
+
+// Creates Movie Reviews Custom Post Type Services
+function services_reviews_init() {
+    $args = array(
+        'label' => 'Services',
+        'public' => true,
+        'show_ui' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'rewrite' => array('slug' => 'services-reviews'),
+        'query_var' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'trackbacks',
+            'custom-fields',
+            'comments',
+            'revisions',
+            'thumbnail',
+            'author',
+            'page-attributes',)
+    );
+    register_post_type( 'services-reviews', $args );
+}
+add_action( 'init', 'services_reviews_init' );
+
+// Creates Movie Reviews Custom Post Type Carousel
+function carousel_reviews_init() {
+    $args = array(
+        'label' => 'Carousel',
+        'public' => true,
+        'show_ui' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'rewrite' => array('slug' => 'carousel-reviews'),
+        'query_var' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'trackbacks',
+            'custom-fields',
+            'comments',
+            'revisions',
+            'thumbnail',
+            'author',
+            'page-attributes',)
+    );
+    register_post_type( 'carousel-reviews', $args );
+}
+add_action( 'init', 'carousel_reviews_init' );
+
+// Creates Movie Reviews Custom Post Type Works
+function works_reviews_init() {
+    $args = array(
+        'label' => 'Works',
+        'public' => true,
+        'show_ui' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'rewrite' => array('slug' => 'works-reviews'),
+        'query_var' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'trackbacks',
+            'custom-fields',
+            'comments',
+            'revisions',
+            'thumbnail',
+            'author',
+            'page-attributes',)
+    );
+    register_post_type( 'works-reviews', $args );
+}
+add_action( 'init', 'works_reviews_init' );
+
+// Pagination blog page
+function custom_pagination($numpages = '', $pagerange = '', $paged='') {
+
+    if (empty($pagerange)) {
+        $pagerange = 2;
+    }
+
+    /**
+     * This first part of our function is a fallback
+     * for custom pagination inside a regular loop that
+     * uses the global $paged and global $wp_query variables.
+     *
+     * It's good because we can now override default pagination
+     * in our theme, and use this function in default quries
+     * and custom queries.
+     */
+    global $paged;
+    if (empty($paged)) {
+        $paged = 1;
+    }
+    if ($numpages == '') {
+        global $wp_query;
+        $numpages = $wp_query->max_num_pages;
+        if(!$numpages) {
+            $numpages = 1;
+        }
+    }
+
+    /**
+     * We construct the pagination arguments to enter into our paginate_links
+     * function.
+     */
+    $pagination_args = array(
+        'base'            => get_pagenum_link(1) . '%_%',
+        'format'          => 'page/%#%',
+        'total'           => $numpages,
+        'current'         => $paged,
+        'show_all'        => False,
+        'end_size'        => 1,
+        'mid_size'        => $pagerange,
+        'prev_next'       => True,
+        'prev_text'       => __('&laquo;'),
+        'next_text'       => __('&raquo;'),
+        'type'            => 'plain',
+        'add_args'        => false,
+        'add_fragment'    => ''
+    );
+
+    $paginate_links = paginate_links($pagination_args);
+
+    if ($paginate_links) {
+        echo "<nav class='custom-pagination'>";
+        echo $paginate_links;
+        echo "</nav>";
+    }
+}
+
+// Add section for title page
+add_action('admin_menu', function(){
+    add_theme_page('customize', 'customize', 'edit_theme_options', 'customize.php');
+});
+
+add_action('customize_register', function($customizer){
+    $customizer->add_section(
+        'example_section_one',
+        array(
+            'title' => 'Background for title page',
+            'description' => 'Background',
+            'priority' => 35,
+        )
+    );
+    $customizer->add_setting(
+        'copyright_textbox',
+        array('default' => 'Title page')
+    );
+    $customizer->add_control(
+        'copyright_textbox',
+        array(
+            'label' => 'Text',
+            'section' => 'example_section_one',
+            'type' => 'text',
+        )
+    );
+    $customizer->add_setting('img-upload');
+    $customizer->add_control(
+        new WP_Customize_Image_Control(
+            $customizer,
+            'img-upload',
+            array(
+                'label' => 'Upload img',
+                'section' => 'example_section_one',
+                'settings' => 'img-upload'
+            )
+        )
+    );
+});
+
+add_theme_support( 'post-thumbnails' );
